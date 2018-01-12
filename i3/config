@@ -205,24 +205,21 @@ bindsym $mod+m move workspace to output left
 assign [class="Tilix"] $workspace1
 assign [class="jetbrains-idea"] $workspace2
 assign [class="Firefox"] $workspace3
+for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Spotify"] $workspace10
 
 # Autostarting applications
-exec spotify
-exec firefox
-exec_always compton -f
-exec_always feh --bg-scale /usr/share/backgrounds/Lighthouse_at_sunrise_by_Frenchie_Smalls.jpg 
+exec --no-startup-id spotify
+exec --no-startup-id firefox
+exec --no-startup-id xmodmap ~/.Xmodmap # Fixes the Meta_L char to Super for intellij idea
+exec_always --no-startup-id compton -f
+exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/Lighthouse_at_sunrise_by_Frenchie_Smalls.jpg 
 
 # Monitor adjustment
 exec_always xrandr --output VGA-1 --off --output HDMI-2 --off \
 	--output HDMI-1 --off --output DP-1 --mode 1920x1080 \
 	--pos 1920x0 --rotate normal --output DP-2 \
 	--mode 1920x1080 --pos 0x0 --rotate normal
-
-mode "passthrough" {
-    bindcode Mod4 mode "default"
-}
-bindcode Mod4 mode "passthrough"
 
 # Widow Colours
 #                         border  background text    indicator
